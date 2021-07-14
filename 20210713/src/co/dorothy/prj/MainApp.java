@@ -13,13 +13,14 @@ public class MainApp {
 //		ifTest.ifElseIf();
 //		ifTest.ifElseTest();
 		
+		ForExercise forExercise = new ForExercise();
 //		ForTest forTest = new ForTest();
-//		forTest.singleFor();
+		forExercise.singleFor();
 //		forTest.doubleFor();
 //		forTest.forEach();
 		
-		MenuTest mainMenu = new MenuTest();
-		mainMenu.run();		
+//		MenuTest mainMenu = new MenuTest();
+//		mainMenu.run();		
 		
 	}
 }
