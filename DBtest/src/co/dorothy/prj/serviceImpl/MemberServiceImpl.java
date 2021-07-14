@@ -14,7 +14,7 @@ import co.dorothy.prj.vo.MemberVO;
 
 public class MemberServiceImpl extends DAO implements MemberService {
 	private PreparedStatement psmt;  //데이터 베이스에 명령 전달
-	private ResultSet rs; // 레코드 세트를 받는 것
+	private ResultSet rs; // db 레코드 세트를 받는 것
 	
 	
 	@Override
@@ -43,13 +43,29 @@ public class MemberServiceImpl extends DAO implements MemberService {
 
 	@Override
 	public MemberVO memberSelect(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from member where id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getId());
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setId(rs.getNString("id"));
+				vo.setPassword(rs.getString("password"));
+				vo.setName(rs.getString("name"));
+				vo.setAddress(rs.getString("address"));
+				vo.setTel(rs.getString("tel"));
+				vo.setAge(rs.getInt("age"));
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 	@Override
 	public int memberInsert(MemberVO vo) {
-		// TODO Auto-generated method stub
+//		String sql = "select * from member";
+//		rs = psmt.executeUpdate(sql)
 		return 0;
 	}
 

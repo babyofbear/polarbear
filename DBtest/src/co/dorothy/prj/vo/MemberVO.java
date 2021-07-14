@@ -59,6 +59,12 @@ public class MemberVO {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+	@Override
+	public String toString() {
+		return  id + " : " + password + " : " + name + " : " + address + " : "
+				+ tel + " : " + age ;
+	}
 	
 	
 }

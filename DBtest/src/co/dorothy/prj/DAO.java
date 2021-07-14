@@ -11,7 +11,7 @@ public class DAO {
 	
 	public Connection conn;
 	
-	public DAO() {
+	public DAO() { //data access object
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
