@@ -62,8 +62,10 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return  id + " : " + password + " : " + name + " : " + address + " : "
-				+ tel + " : " + age ;
+	  
+	System.out.println(id + " : " + password + " : " + name + " : " + address + " : "
+			+ tel + " : " + age);
+	return null;
 	}
 	
 	

@@ -14,20 +14,20 @@ import co.dorothy.prj.vo.MemberVO;
 
 public class MemberServiceImpl extends DAO implements MemberService {
 	private PreparedStatement psmt;  //데이터 베이스에 명령 전달
-	private ResultSet rs; // db 레코드 세트를 받는 것
+	private ResultSet rs; // db 레코드 세트를 받는 것, 받을 그릇
 	
 	
 	@Override
-	public List<MemberVO> memberSelectList() {
+	public List<MemberVO> memberSelectList() { //전체리스트
 		List<MemberVO> members = new ArrayList<MemberVO>();
 		MemberVO vo;
 		String sql = "select * from member";
 		try {
 			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
+			rs = psmt.executeQuery(); //받을 그릇-->rs
+			while(rs.next()) { //종료가 명확하지 않을때 while 문 쓴다.
 				vo = new MemberVO();
-				vo.setId(rs.getNString("id"));
+				vo.setId(rs.getString("id"));
 				vo.setPassword(rs.getString("password"));
 				vo.setName(rs.getString("name"));
 				vo.setAddress(rs.getString("address"));
@@ -42,14 +42,14 @@ public class MemberServiceImpl extends DAO implements MemberService {
 	}
 
 	@Override
-	public MemberVO memberSelect(MemberVO vo) {
+	public MemberVO memberSelect(MemberVO vo) { //한 명만 찾기
 		String sql = "select * from member where id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getId());
+			psmt.setString(1, vo.getId()); //?에 값을 담는 다는 것(set은 (안의 값)을 집어 넣는것)
 			rs = psmt.executeQuery();
-			if(rs.next()) {
-				vo.setId(rs.getNString("id"));
+			if(rs.next()) { //존재 하냐 안하냐
+				vo.setId(rs.getString("id"));
 				vo.setPassword(rs.getString("password"));
 				vo.setName(rs.getString("name"));
 				vo.setAddress(rs.getString("address"));
@@ -64,21 +64,55 @@ public class MemberServiceImpl extends DAO implements MemberService {
 
 	@Override
 	public int memberInsert(MemberVO vo) {
-//		String sql = "select * from member";
-//		rs = psmt.executeUpdate(sql)
-		return 0;
+		// 데이터 삽입
+		int n = 0;
+		String sql = "insert into member values(?,?,?,?,?,?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getId());
+			psmt.setString(2, vo.getPassword());
+			psmt.setString(3, vo.getName());
+			psmt.setString(4, vo.getAddress());
+			psmt.setString(5, vo.getTel());
+			psmt.setInt(6, vo.getAge());
+			n = psmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return n;
 	}
 
 	@Override
 	public int memberDelete(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		// 데이터 삭제
+		int n = 0;
+		String sql = "delete from member where id = ?";  //id가 유일한 key(PK=primary key)
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getId());
+			n = psmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
 	}
 
 	@Override
 	public int memberUpdate(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		// 데이터 수정
+		int n = 0;
+		String sql = "update member set address = ?,tel=?,name=? where id =?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getAddress());
+			psmt.setString(2, vo.getTel());
+			psmt.setString(3, vo.getName());
+			psmt.setString(4, vo.getId());
+			n = psmt.executeUpdate();
+		}catch(SQLException e ) {
+			e.printStackTrace();
+		}
+		return n;
 	}
-
+	
 }
