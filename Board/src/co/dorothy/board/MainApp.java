@@ -1,10 +1,12 @@
 package co.dorothy.board;
 
+import co.dorothy.board.app.Menu;
+
 public class MainApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello!!");
+		Menu menu = new Menu();
+		menu.run();
 	}
 
 }

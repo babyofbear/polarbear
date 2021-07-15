@@ -23,6 +23,7 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
+}
 
 //	public List<BoardVO> BoardSelectList() {
 //		// TODO Auto-generated method stub

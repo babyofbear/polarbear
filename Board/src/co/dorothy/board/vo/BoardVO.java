@@ -62,6 +62,11 @@ public class BoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+
+	@Override
+	public String toString() {
+		return "글번호: " + boardId + "글쓴이: " + writer + "제목" + title + "조회수: " + hit ;
+	}
 	
 	
 	

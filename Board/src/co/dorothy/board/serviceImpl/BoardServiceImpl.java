@@ -16,7 +16,7 @@ public class BoardServiceImpl extends DAO implements BoardService {
 	
 
 	@Override
-	public List<BoardVO> BoardSelectList() { //전체 목록
+	public List<BoardVO> boardSelectList() { //전체 목록
 		List<BoardVO> boards = new ArrayList<BoardVO>();
 		BoardVO vo;
 		String sql = "select * from boardid";
@@ -34,7 +34,7 @@ public class BoardServiceImpl extends DAO implements BoardService {
 				boards.add(vo);
 				
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return boards;
@@ -95,7 +95,7 @@ public class BoardServiceImpl extends DAO implements BoardService {
 		return n;
 	}
 
-	private void hitUpdate(String boardId) {
+	private void hitUpdate(String boardId) { //조회수 한번 늘리기
 		String sql = "update board set hit = hit + 1 where boardid =?";
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -105,6 +105,8 @@ public class BoardServiceImpl extends DAO implements BoardService {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 	
 //	@Override
