@@ -1,9 +1,9 @@
-package co.dorothy.board.vo;
+package co.dorothy.manager.board.vo;
 
 import java.sql.Date;
 
 public class BoardVO {
-
+	
 	private String boardId;
 	private String writer;
 	private String title;
@@ -11,8 +11,8 @@ public class BoardVO {
 	private Date enterDate;
 	private int hit;
 	
-	public BoardVO() { //생성자
-		
+	public BoardVO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getBoardId() {
@@ -62,14 +62,14 @@ public class BoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-
-	@Override
+	
 	public String toString() {
-		System.out.println("글번호:" + boardId + " /글쓴이:" + writer + " /제목:" + title + " /조회수:" + hit);
-		return  null;
+		System.out.print(" "+boardId+" : ");
+		System.out.print(writer+" : ");
+		System.out.print(title+" : ");
+		System.out.print(enterDate+" : ");
+		System.out.println(hit);
+		return null;
 	}
-	
-	
-	
 	
 }

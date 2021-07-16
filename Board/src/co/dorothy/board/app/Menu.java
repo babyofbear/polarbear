@@ -1,5 +1,7 @@
 package co.dorothy.board.app;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import co.dorothy.board.service.BoardService;
@@ -12,7 +14,8 @@ public class Menu {
 
 	private void menuTitle() {
 		System.out.println("==============================");
-		System.out.println("======  자  유  게  시  판  =====");
+		boardSelectList();
+		System.out.println("==============================");
 		System.out.println("======= 1. 글     조 회 ========");
 		System.out.println("======= 2. 글     쓰 기 ========");
 		System.out.println("======= 3. 글     삭 제 ========");
@@ -25,12 +28,11 @@ public class Menu {
 	private void mainMenu() {
 		int selNo;
 		boolean b = false;
-
 		do {
 			menuTitle();
 			switch (selNo = sc.nextInt()){
 			case 1:
-				boardSelectList();
+				boardSelect() ;
 				break;
 			case 2:
 				boardWrite();
@@ -46,10 +48,15 @@ public class Menu {
 				break;
 			}
 		} while (!b);
-		{
-
+		
+	}
+	
+	private void boardSelectList() {
+		List<BoardVO> boards = new ArrayList<BoardVO>();
+		boards = dao.boardSelectList();
+		for( BoardVO vo : boards) {
+			vo.toString();
 		}
-
 	}
 
 	private void boardWrite() { //글 쓰기
@@ -61,7 +68,7 @@ public class Menu {
 		System.out.print("제목을 입력하세요>>> ");
 		vo.setTitle(sc.next());sc.nextLine();
 		System.out.print("내용을 입력하세요>>> ");
-		vo.setSubject(sc.next());sc.nextLine();
+		vo.setSubject(sc.nextLine());
 		
 		int n = dao.boardWrite(vo);
 		if( n !=0) {
@@ -85,15 +92,12 @@ public class Menu {
 		
 	}
 
-	private void boardSelectList() {
+	private void boardSelect() {
 		BoardVO vo = new BoardVO();
-		System.out.println(vo.toString());
-		System.out.print("======================");
 		System.out.print("조회할 글 번호를 입력하세요>>>");
 		vo.setBoardId(sc.next());sc.nextLine();
-		
 		vo = dao.boardVOSelect(vo);
-		System.out.print(vo.getSubject());
+		System.out.println(vo.getSubject());
 		
 		
 	}
