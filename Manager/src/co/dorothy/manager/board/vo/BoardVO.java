@@ -64,11 +64,11 @@ public class BoardVO {
 	}
 	
 	public String toString() {
-		System.out.print(" "+boardId+" : ");
+		System.out.print("<"+boardId+" : ");
 		System.out.print(writer+" : ");
 		System.out.print(title+" : ");
 		System.out.print(enterDate+" : ");
-		System.out.println(hit);
+		System.out.println(hit+">");
 		return null;
 	}
 	

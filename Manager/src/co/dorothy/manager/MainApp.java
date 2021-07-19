@@ -26,7 +26,4 @@ public class MainApp {
 //		}
 		// 한 명 불러오기
 	}
-	
-	
-
 }

@@ -46,7 +46,6 @@ public class LoginMenu {
 				}
 			}
 		}while(!b) ; 
-		
 		return vo; //
 	}
 	
@@ -56,7 +55,7 @@ public class LoginMenu {
 		if(vo.getId() !=null) {
 			//요기서 주메뉴 호출하면 된다.
 			if(vo.getAuthor().equals("ADMIN")) {
-				admin.run(vo);
+				admin.run(vo); //어드민 객체의 어드민 메뉴 호출
 			}else {
 				user.run(vo);
 			}

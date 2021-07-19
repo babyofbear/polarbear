@@ -70,12 +70,13 @@ public class MemberVO {
 	}
 
 	public String toString() {
-		 System.out.print(" "+ id + " : ");
+		 System.out.print("<"+ id + " : ");
 		 System.out.print(password + " : ");
 		 System.out.print(name + " : ");
 		 System.out.print(address + " : ");
 		 System.out.print(tel+ " : ");
-		 System.out.println(age);
+		 System.out.print(age +" : ");
+		 System.out.println(author+">");
 		 return null;
 	}
 	
