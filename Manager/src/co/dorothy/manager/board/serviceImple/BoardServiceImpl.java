@@ -90,7 +90,7 @@ public class BoardServiceImpl implements BoardService {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return n;
 	}
 
 	@Override
