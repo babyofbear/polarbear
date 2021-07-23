@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch06/combinator.html</title>
+</head>
+
+    <style>
+        /* div>h2 div태그 자식 h2 태그를 찾아서 */
+        div>h2.favorite {
+            background-color: brown;
+        }
+        /* div 태그 아래 자식 포함 자손 중 li 태그 */
+        div li:nth-of-type(1) {
+            background-color: chartreuse;
+        }
+        /* h2 의 형제 중에 h3 을 찾아 스타일을  */
+        h2~h3 {
+            border: 1px dotted red;
+        }
+          /* h2 의 형제 중에 바로 옆에 있는 h3 을 찾아 스타일을  */
+        h2+h3 {
+            color: salmon;
+        }
+        /* h3,ul,li 태그 모두 걸고 싶을 때 */
+        h3,
+        ul,
+        li {
+            background-color: turquoise;
+        }
+        /* !important 우선 순위 무시하고 최우선 */
+        li {
+            background-color: blue !important;
+        }
+        /* 관계가 복잡해서 찾기 힘들면 태그 안에 id(best) 부여해서 그 아이디를 #+id 로 불러와서 스타일 적용 */
+        #best {
+            font-size: 100px;
+        }
+    </style>
+
+<body>
+    <!-- div>h1+h2-->
+    <div>
+        <h2 class="favorite">Apple</h2>
+        <h2 id="best">Peach</h2>
+        <h3>Banana</h3>
+        <ul>
+            <li>Cherry</li>
+            <li>Mango</li>
+        </ul>
+        <h3>Orange</h3>
+    </div>
+    <h2 class="favorite">Melon</h2>
+</body>
+</html>

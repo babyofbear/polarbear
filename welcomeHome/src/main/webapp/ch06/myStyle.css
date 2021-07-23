@@ -1,0 +1,33 @@
+
+p {
+    color: steelblue;
+}
+h2 {
+    background-color: thistle;
+}
+#show {
+    color: rgb(255, 0, 106);
+}
+.show {
+    font-size: 20px;
+}
+input[type='submit'] {
+    width: 100px;
+}
+
+span {
+    display: inline-block;
+    border-width: 1px;
+    border-color: red;
+    border-style: dashed;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px;
+    background-color: sandybrown;
+    color:snow;
+    }
+div {
+    display: block;
+}

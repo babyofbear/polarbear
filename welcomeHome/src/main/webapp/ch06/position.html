@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch06/position.html</title>
+    <style>
+        div {
+            background-color: yellow;
+        }
+        p {
+            /* static 위치가 변하지 않음 cf relative*/
+            position: static;
+           
+            width: 100px;
+            height: 30px;
+            background-color: red;
+            margin: 10px 0;
+        }
+        p.content {
+            /* document 페이지를 기준으로 해서 움직임 ==>fixed */
+            /* relative ==기존 위치(원점?)를 기준으로 움직임 */
+            /* absolute div 감싸진 부분 기준으로 움직임 */
+            /* sticky 스크롤 할때 화면 밖으로 사라지지 않게 함  */
+            position: fixed;
+            left: 50px;
+            top: 30px;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Content-1</p>
+        <p>Content-2</p>
+        <p>Content-3</p>
+        <p class="content">Content-4</p>
+        <p>Content-5</p>
+        <p>Content-6</p>
+        <p>Content-7</p>
+        <p>Content-8</p>
+        <p>Content-9</p>
+        <p>Content-10</p>
+    </div>
+    
+</body>
+</html>
